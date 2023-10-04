@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/simdb?currentSchema=ap_2
+    username: adminuser
+    password: adminuser
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect # or PostgreSQL10Dialect or another relevant dialect
+        show_sql: true  # True if you want to display queries, false otherwise.
+        format_sql: true # Pretty print SQL statements in the log.
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false      
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
